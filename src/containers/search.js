@@ -1,6 +1,39 @@
 import React, { Component } from 'react';
+import Comic from '../components/comic';
 
 export default class Search extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			searchTerm: "",
+			showSpinner: "hide",
+		};
+
+		this.updateSearchTerm = this.updateSearchTerm.bind(this);
+		this.initiateSearch = this.initiateSearch.bind(this);
+		this.renderSearchResults = this.renderSearchResults.bind(this);
+	}
+
+	updateSearchTerm(event) {
+		this.setState({searchTerm: event.target.value});
+	}
+
+	initiateSearch() {
+		this.setState({showSpinner: ""});
+		this.getSearchResults(this.state.searchTerm);
+	}
+
+	getSearchResults() {
+		//Send Ajax
+		//renderSearchResults with returned comics
+	}
+
+	renderSearchResults() {
+		//Use Comic component to render search results
+		//this.setState({showSpinner: "hide"});
+	}
+
 	render() {
 		return (
 			<div className="site-body-wrapper">
@@ -10,7 +43,12 @@ export default class Search extends Component {
 							<p className="search-form-description">
 								Search for a title that starts with or matches:
 							</p>
-							<input type="text" name="search-by-title" className="search-by-title" placeholder="Enter a Title to Search"/>
+							<input 
+								onChange={this.updateSearchTerm} 
+								className="search-by-title" 
+								placeholder="Enter a Title to Search"
+								value={this.state.searchTerm}
+							/>
 						</div>
 						<div className="search-form_field-set">
 							<p className="search-form-description">
@@ -23,7 +61,11 @@ export default class Search extends Component {
 							</p>
 							<input type="text" name="search-by-character" className="search-by-character" placeholder="Enter a Character to Search"/>
 						</div>
-						<button className="search button">Search</button>
+						<button 
+							className="search button" 
+							onClick={this.initiateSearch}>
+							Search
+						</button>
 						<div className="advanced-search-options-show"> Show Advanced Search Options </div>
 						<div className="advanced-search-options-wrapper">
 							<div className="advanced-search-option">
@@ -38,9 +80,7 @@ export default class Search extends Component {
 								</select>
 							</div>
 							<div className="advanced-search-option">
-								<div className="dropdown-label">
-									Format:
-								</div>
+								<div className="dropdown-label">Format:</div>
 								<select name="format" className="format advanced-search-option_dropdown">
 									<option value="">Choose a Format</option>
 									<option value="comic">Comic</option>
@@ -50,9 +90,7 @@ export default class Search extends Component {
 								</select>
 							</div>
 							<div className="advanced-search-option">
-								<div className="dropdown-label">
-									Sort By:
-								</div>
+								<div className="dropdown-label">Sort By:</div>
 								<select name="sort" className="sort advanced-search-option_dropdown">
 									<option value="">Choose a Sorting</option>
 									<option value="onsaleDate">On Sale Date - Ascending</option>
@@ -65,10 +103,8 @@ export default class Search extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="spinner hide"></div>
-					<div className="results">
-
-					</div>
+					<div className={`spinner ${this.state.showSpinner}`}></div>
+					<div className="results"></div>
 					<div className="pagination hide">
 						<div className="prev button hide">
 							Previous
