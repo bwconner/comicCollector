@@ -1,0 +1,243 @@
+.login-account-wrapper {
+	-moz-transition: opacity .5s ease-in-out;
+	-webkit-transition: opacity .5s ease-in-out;
+	height: auto;
+	opacity: 1;
+	transition: opacity .5s ease-in-out;
+
+	&.hide {
+		height: 0px;
+		opacity: 0;
+	}
+
+	.login-account-wrapper_form {
+		display: block;
+		margin: 0px auto;
+		text-align: center;
+		transition: all 0.5s ease;
+		width: 300px;
+
+		&.hide {
+			visibility: hidden;
+		}
+
+		.login-account-form {
+			display: inline-block;
+			text-align: left;
+		}
+	}
+
+	.login-account-wrapper_success {
+		transition: all 0.5s ease;
+
+		&.hide {
+			visibility: hidden;
+		}
+	}
+
+	.login-account-wrapper_benefits {
+		margin: 0px auto;
+		width: 180px;
+
+		img {
+			margin-top: 20px;
+			width: 180px;
+		}
+	}
+
+	.section-header {
+		margin: 10px auto;
+		text-align: center;
+	}
+
+	.input-label {
+		margin: 25px 0px 0px;
+	}
+
+	input {
+		border: 2px solid #000;
+		font-family: 'Oswald', sans-serif;
+		font-size: 14px;
+		letter-spacing: 0.5px;
+		padding: 10px;
+		width: 200px;
+	}
+
+	.button {
+		cursor: pointer;
+		font-size: 16px;
+		margin-top: 15px;
+		width: 200px;
+	}
+
+	.login-account-section {
+		min-height: 255px;
+
+		li {
+			padding: 10px 0px;
+		}
+	}
+
+	.error {
+		color: #e23636;
+		margin: 0px
+	}
+
+	.login-account-wrapper_create-account {
+		display: block;
+		margin: 0px auto;
+		width: 100%;
+
+		p {
+			display: inline-block;
+		}
+
+		.click-to-create {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+}
+
+.create-account-wrapper {
+	-moz-transition: opacity .5s ease-in-out;
+	-webkit-transition: opacity .5s ease-in-out;
+	height: auto;
+	opacity: 1;
+	transition: opacity .5s ease-in-out;
+
+	&.hide {
+		height: 0px;
+		opacity: 0;
+	}
+
+	.create-account-wrapper_form {
+		display: block;
+		margin: 0px auto;
+		text-align: center;
+		transition: all 0.5s ease;
+		width: 300px;
+
+		&.hide {
+			visibility: hidden;
+		}
+
+		.create-account-form {
+			display: inline-block;
+			text-align: left;
+		}
+	}
+
+	.create-account-wrapper_success {
+		transition: all 0.5s ease;
+
+		&.hide {
+			visibility: hidden;
+		}
+	}
+
+	.create-account-wrapper_benefits {
+		display: block;
+		margin: 0px auto;
+		width: 300px;
+	}
+
+	.section-header {
+		margin: 10px auto;
+		text-align: center;
+	}
+
+	.input-label {
+		margin: 25px 0px 0px;
+	}
+
+	input {
+		border: 2px solid #000;
+		font-family: 'Oswald', sans-serif;
+		font-size: 14px;
+		letter-spacing: 0.5px;
+		padding: 10px;
+		width: 200px;
+	}
+
+	.button {
+		cursor: pointer;
+		font-size: 16px;
+		margin-top: 15px;
+		width: 200px;
+	}
+
+	.create-account-section {
+		border: 2px solid #000;
+		margin-top: 25px;
+		min-height: 335px;
+
+		li {
+			padding: 10px 0px;
+		}
+	}
+
+	.error {
+		color: #e23636;
+		margin: 0px
+	}
+
+	.create-account-wrapper_login {
+		display: block;
+		margin: 0px auto;
+		width: 100%;
+
+		p {
+			display: inline-block;
+		}
+
+		.click-to-login {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
+}
+
+/*MQ OVERRIDES*/
+@media only screen and (min-width: 900px) {
+
+	.login-account-wrapper {
+		display: flex;
+		margin: 0px auto;
+		min-width: 50%;
+		width: 505px;
+
+		.login-account-wrapper_form {
+			display: inline-block;
+			float: left;
+		}
+
+		.login-account-wrapper_benefits {
+			display: inline-block;
+			float: left;
+			margin-top: 8px;
+			padding-left: 25px;
+
+			img { 
+				margin: 0px;
+			}
+		}
+	}
+
+	.create-account-wrapper {
+		display: inline-block;
+		width: 100%;
+
+		.create-account-wrapper_form {
+			display: inline-block;
+			float: left;
+		}
+
+		.create-account-wrapper_benefits {
+			display: inline-block;
+			float: left;
+			padding-left: 100px;
+			width: calc(100% - 420px);
+		}
+	}
+}

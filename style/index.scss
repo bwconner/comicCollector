@@ -1,0 +1,21 @@
+.main-content-section {
+
+	.main-content-section__subsection {
+		margin: 10px 0px;
+		width: 100%;
+	}
+
+	.main-content-section__subsection-header {
+		background: #e23636;
+		box-shadow: 4px 4px 15px #000;
+		color: #fff;
+		line-height: 40px;
+		padding-left: 20px;
+		text-shadow: 4px 4px 12px #000;
+	}
+
+	.main-content-section__subsection-body {
+		color: #000;
+		margin: 20px
+	}
+}

@@ -1,0 +1,282 @@
+
+body {
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+/* NAV STYLES */
+.header {
+	background: #e23636; /*#0066cc;*/
+	border-bottom: 5px solid #000;
+	box-shadow: 0px 0px 15px #000;
+	color: #ffffff;
+	text-align: center;
+	width: 100%;
+
+	.header__logo,
+	.header__home-link {
+		color: #ffffff;
+		cursor: pointer;
+		font-family: 'Amatica SC', cursive;
+		font-size: 100px;
+		line-height: 80px;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.header__logo {
+		background-image: url("../images/collectorPixelArt.png");
+		background-position: center;
+		background-repeat: no-repeat;
+		display: inline-block;
+		line-height: 210px;
+		text-shadow: 4px 4px 8px #000;
+	}
+
+	.header__main-nav {
+		height: 40px;
+		position: absolute;
+		right: 0px;
+	}
+
+	.header__link {
+		display: inline-block;
+		margin: 0px 8px;
+		padding: 0px 5px;
+
+		&.selected {
+			background: #000;
+		}
+
+		a {
+			background-size: cover;
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			margin-top: 10px;
+			width: 30px;
+		}
+	}
+
+	.header__link-account {
+		background-image: url("../images/icons/account.png");
+
+		&.selected {
+			background-image: url("../images/icons/account_selected.png");
+			background-size: cover;
+			background: #000;
+		}
+	}
+
+	.header__link-search {
+		background-image: url("../images/icons/search.png");
+
+		&.selected {
+			background-image: url("../images/icons/search_selected.png");
+			background-size: cover;
+			background: #000;
+		}
+	}
+
+	.login-wrapper {
+		background: #000;
+		display: none;
+		height: 165px;
+		left: -122px;
+		margin-top: -5px;
+		position: absolute;
+		width: 170px;
+
+		.input-label {
+			margin: 0px;
+			padding: 5px 10px 5px;
+			text-align: left;
+		}
+
+		input {
+			line-height: 20px;
+			width: 150px;
+		}
+
+		.button {
+			width: 150px;
+		}
+	}
+}
+
+.header--mini {
+	box-shadow: 4px 4px 15px #000;
+	height: 0px;
+	opacity: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0px;
+
+	.header__home-link {
+		margin-bottom: 40px;
+		margin-top: 0px;
+	}
+
+	.header__link {
+		line-height: 25px;
+	}
+
+	.in-view {
+		height: 0px;
+		overflow: hidden;
+	}
+
+	.header__mini-logo {
+		color: #ffffff;
+		cursor: pointer;
+		float: left;
+		font-family: 'Amatica SC', cursive;
+		font-size: 35px;
+		line-height: 44px;
+		margin: 0px 35px;
+
+		&:before {
+			background-image: url("../images/collectorPixelArt.png");
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: "";
+			height: 45px;
+			left: 8px;
+			position: absolute;
+			width: 23px;
+		}
+	}
+
+	.header__main-nav {
+		float: right;
+		line-height: 63px;
+		margin: 0px 10px;
+	}
+}
+
+.current-page {
+	border-color: #99ccff;
+	color: #99ccff;
+
+	a {
+		color: #99ccff;
+	}
+}
+
+/* FOOTER STYLES */
+.footer {
+	background: #0059b3;
+	bottom: 0px;
+	color: #ffffff;
+	height: 120px;
+	width: 100%;
+}
+
+/* BASIC BODY STYLES */
+.site-body-wrapper {
+	background: #ffffff;
+	color: #000;
+	font-family: 'Oswald', sans-serif;
+	font-size: 17px;
+	letter-spacing: .7px;
+	margin: 30px auto;
+	width: 90%;
+
+	.site-section-wrapper {
+		.section-header-text {
+			color: #518cca;
+			font-size: 18px;
+			line-height: 26px;
+			padding: 5px 10px;
+		}
+
+		.section-body {
+			background: #ffffff;
+			color: #0059b3;
+			font-size: 15px;
+			letter-spacing: .7px;
+		}
+	}
+}
+
+/* STANDARD BUTTON STYLES */
+.button {
+	background: #e23636;
+	border: 1px solid #000;
+	box-shadow: 0px 0px 4px #000;
+	color: #fff;
+	cursor: pointer;
+	font-family: 'Oswald', sans-serif;
+	padding: 5px;
+}
+
+/* STANDARD SPINNER STYLES */
+.spinner {
+	animation: spin 2s linear infinite;
+	background-image: url("../images/collectorPixelArt.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 16px solid #f78f3f;
+	border-bottom: 16px solid #518cca;
+	border-radius: 50%;
+	border-top: 16px solid #518cca;
+	height: 80px;
+	margin: 0px auto;
+	width: 80px;
+}
+
+/*STANDARD HEADER STYLE*/
+.section-header {
+	background: #e23636;
+	box-shadow: 4px 4px 15px #000;
+	color: #fff;
+	line-height: 40px;
+	padding-left: 20px;
+	text-shadow: 4px 4px 12px #000;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+/*STANDARD SHOW AND HIDE CLASSES*/
+.show {
+	display: block;
+}
+
+.hide {
+	display: none;
+}
+
+/*MQ OVERRIDES*/
+@media only screen and (min-width: 448px) {
+	.header .header__home-link {
+		line-height: 150px;
+		margin-bottom: 25px;
+	}
+	.header--mini.in-view {
+		height: 50px;
+		opacity: 0.95;
+		transition: all .2s ease .1s;
+		z-index: 1000;
+	}
+}
+
+@media only screen and (min-width: 1110px) {
+	.login-wrapper.show {
+		display: block;
+	}
+}
+
+@import 'index';
+@import 'search';
+@import 'profile';
+@import 'comicInfoPage';
+@import 'collection';
+@import 'createAccount';

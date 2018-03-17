@@ -1,0 +1,78 @@
+.comic {
+	margin: 0px auto;
+	width: 100%;
+
+	.comic__image {
+		width: 100%
+	}
+
+	.comic-information {
+		vertical-align: top;
+	}
+
+	.comic__title,
+	.comic__creators,
+	.comic__characters,
+	.comic__description {
+		padding-top: 25px;
+	}
+
+	.comic__add-to-collection,
+	.comic__add-to-wishlist {
+		display: block;
+		margin-top: 25px;
+		text-align: center;
+		width: 125px;
+	}
+}
+
+@media only screen and (min-width: 650px) {
+	.comic {
+		.comic__image {
+			display: inline-block;
+			margin-left: 10%;
+			width: 30%;
+		}
+
+		.comic-information {
+			display: inline-block;
+			margin-left: 2.5%;
+			width: 56%;
+		}
+
+		.comic__add-to-collection,
+		.comic__add-to-wishlist { 
+			display: inline-block;
+		}
+
+		.comic__add-to-wishlist {
+			margin-left: 10px;
+		}
+	}
+}
+
+@media only screen and (min-width: 900px) {
+	.comic {
+		width: 75%;
+
+		.comic__image {
+			margin-left: 10%;
+			width: 30%;
+		}
+
+		.comic-information {
+			display: inline-block;
+			margin-left: 2.5%;
+		}
+
+		.comic__add-to-collection,
+		.comic__add-to-wishlist {
+			display: inline-block;
+			width: 150px;
+		}
+
+		.comic__add-to-wishlist {
+			margin-left: 10px;
+		}
+	}
+}
