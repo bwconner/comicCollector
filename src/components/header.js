@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 
 export default class Header extends Component {
 	render() {
@@ -8,10 +9,14 @@ export default class Header extends Component {
 					<div className="header">
 						<div className="header__main-nav">
 							<div className="header__link">
-								<a className="header__link-account" href="/comiccollector/pages/createaccount.php"></a>
+								<Link to="/login" >
+									<p className="header__link-account"></p>
+								</Link>
 							</div>
 							<div className="header__link">
-								<a className="header__link-search" href="/comiccollector/pages/search.php"></a>
+								<Link to="/search" >
+									<p className="header__link-search"></p>
+								</Link>
 							</div>
 						</div>
 						<a className="header__home-link"><h1 className="header__logo">Comic Collector</h1></a>

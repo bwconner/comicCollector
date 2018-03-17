@@ -9,6 +9,7 @@ import App from './components/app';
 import Header from './components/header';
 import Search from './containers/search';
 import Login from './containers/login';
+import Signup from './containers/signup';
 import Profile from './containers/profile';
 import Account from './containers/account';
 import Collection from './containers/collection';
@@ -19,9 +20,9 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 ReactDOM.render(
 	<Provider store={createStoreWithMiddleware(reducers)}>
 		<div>
-			<Header />
 			<BrowserRouter >
 				<div>
+					<Header />
 					<Switch>
 						<Route path="/account" component={Account} />
 						<Route path="/profile" component={Profile} />
@@ -29,7 +30,7 @@ ReactDOM.render(
 						<Route path="/collection" component={Collection} />
 						<Route path="/wishlist" component={Wishlist} />
 						<Route path="/login" component={Login} />
-						<Route path="/signup" component={Login} />
+						<Route path="/signup" component={Signup} />
 						<Route path="/search" component={Search} />
 						<Route path="/" component={App} />
 					</Switch>
