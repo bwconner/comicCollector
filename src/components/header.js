@@ -19,16 +19,28 @@ export default class Header extends Component {
 								</Link>
 							</div>
 						</div>
-						<a className="header__home-link"><h1 className="header__logo">Comic Collector</h1></a>
+						<Link to="/" >
+							<div className="header__home-link">
+								<h1 className="header__logo">Comic Collector</h1>
+							</div>
+						</Link>
 					</div>
 					<div className="header header--mini">
-						<a className="header__home-link"><h2 className="header__mini-logo">Comic Collector</h2></a>
+						<Link to="/" >
+							<div className="header__home-link">
+								<h2 className="header__mini-logo">Comic Collector</h2>
+							</div>
+						</Link>
 						<div className="header__main-nav">
 							<div className="header__link">
-								<a className="header__link-account"></a>
+								<Link to="/login" >
+									<p className="header__link-account"></p>
+								</Link>
 							</div>
 							<div className="header__link">
-								<a className="header__link-search"></a>
+								<Link to="/search" >
+									<p className="header__link-search"></p>
+								</Link>
 							</div>
 						</div>
 					</div>
