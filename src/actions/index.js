@@ -1,26 +1,25 @@
-export const UPDATE_SEARCH = "UPDATE_SEARCH";
-export const IMAGE_SELECTED = "IMAGE_SELECTED";
-export const VIDEO_SELECTED = "VIDEO_SELECTED";
+import axios from 'axios';
 
+export const FETCH_COMIC = "FETCH_COMIC";
+export const FETCH_COMICS = "FETCH_COMICS";
 
-export function updateTerm(term) {	
-	//A search has been completed, need to return list of pictures and videos
+const ROOT_URL = "https://gateway.marvel.com:443/v1/public/comics?";
+const API_KEY = "&apikey=a650a42e507ca3ac3099fb988c201be2";
+
+export function fetchComic(comicId, callback) {
+	const request = axios.get(`${ROOT_URL}${comicId}${API_KEY}`).then((response) => callback(response.data.data.results));
+
 	return {
-		type: UPDATE_SEARCH,
-		payload: term
+		type: FETCH_COMIC,
+		payload: request
 	};
 }
 
-export function selectImage(image) {	
+export function fetchComics(term, callback) {
+	const request = axios.get(`${ROOT_URL}titleStartsWith=${term}${API_KEY}`).then((response) => callback(response.data.data.results));
+	console.log(`${ROOT_URL}titleStartsWith=${term}${API_KEY}`);
 	return {
-		type: IMAGE_SELECTED,
-		payload: image
-	};
-}
-
-export function selectVideo(video) {	
-	return {
-		type: VIDEO_SELECTED,
-		payload: video
+		type: FETCH_COMICS,
+		payload: request
 	};
 }

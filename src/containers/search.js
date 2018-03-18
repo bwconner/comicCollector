@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Comic from '../components/comic';
+import {connect} from 'react-redux';
+import {fetchComics} from "../actions";
 
-export default class Search extends Component {
+class Search extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			searchTerm: "",
 			showSpinner: "hide",
+			results:[]
 		};
 
 		this.updateSearchTerm = this.updateSearchTerm.bind(this);
@@ -25,13 +28,30 @@ export default class Search extends Component {
 	}
 
 	getSearchResults() {
-		//Send Ajax
-		//renderSearchResults with returned comics
+		this.props.fetchComics(this.state.searchTerm, this.renderSearchResults);
 	}
 
-	renderSearchResults() {
+	renderSearchResults(response) {
 		//Use Comic component to render search results
-		//this.setState({showSpinner: "hide"});
+		//this.setState({results: response});
+		//console.log(this.state);
+		response.map(comic => {
+			return (
+				<div className="search-result comic-{comic.id}" data-title=">{comic.title}" data-image="{`${comic.images[0].path}.${comic.images[0].extension}`}">
+					<img className="result-img" src="{`${comic.images[0].path}.${comic.images[0].extension}`}"/>
+					<div className="result-information">
+						<div className="result-title">{comic.title}</div>
+						<div className="result-creators"></div>
+						<div className="comic__add-to-collection button" data-comicid="{comic.id}">Add to Collection</div>
+						<div className="comic__add-to-wishlist button" data-comicid="{comic.id}">Add to Collection</div>
+						<div className="result__added-succesfully hide">Added Successfully!</div>
+						<a href="/comiccollector/pages/viewcomicinfo?&comicId={comic.id}">View Full Information</a>
+					</div>
+				</div>
+			);
+		});
+
+		this.setState({showSpinner: "hide"});
 	}
 
 	render() {
@@ -104,7 +124,8 @@ export default class Search extends Component {
 						</div>
 					</div>
 					<div className={`spinner ${this.state.showSpinner}`}></div>
-					<div className="results"></div>
+					<div className="results">
+					</div>
 					<div className="pagination hide">
 						<div className="prev button hide">
 							Previous
@@ -120,3 +141,9 @@ export default class Search extends Component {
 		);
 	}
 }
+
+function mapStateToProps(state) {
+	return {results: state.results};
+}
+
+export default connect(mapStateToProps, {fetchComics})(Search);
