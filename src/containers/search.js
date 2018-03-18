@@ -15,6 +15,7 @@ class Search extends Component {
 
 		this.updateSearchTerm = this.updateSearchTerm.bind(this);
 		this.initiateSearch = this.initiateSearch.bind(this);
+		this.setStateSearchResults = this.setStateSearchResults.bind(this);
 		this.renderSearchResults = this.renderSearchResults.bind(this);
 	}
 
@@ -28,30 +29,33 @@ class Search extends Component {
 	}
 
 	getSearchResults() {
-		this.props.fetchComics(this.state.searchTerm, this.renderSearchResults);
+		this.props.fetchComics(this.state.searchTerm, this.setStateSearchResults);
 	}
 
-	renderSearchResults(response) {
-		//Use Comic component to render search results
-		//this.setState({results: response});
-		//console.log(this.state);
-		response.map(comic => {
-			return (
-				<div className="search-result comic-{comic.id}" data-title=">{comic.title}" data-image="{`${comic.images[0].path}.${comic.images[0].extension}`}">
-					<img className="result-img" src="{`${comic.images[0].path}.${comic.images[0].extension}`}"/>
-					<div className="result-information">
-						<div className="result-title">{comic.title}</div>
-						<div className="result-creators"></div>
-						<div className="comic__add-to-collection button" data-comicid="{comic.id}">Add to Collection</div>
-						<div className="comic__add-to-wishlist button" data-comicid="{comic.id}">Add to Collection</div>
-						<div className="result__added-succesfully hide">Added Successfully!</div>
-						<a href="/comiccollector/pages/viewcomicinfo?&comicId={comic.id}">View Full Information</a>
-					</div>
-				</div>
-			);
-		});
-
+	setStateSearchResults(response) {
+		this.setState({results: response});
 		this.setState({showSpinner: "hide"});
+	}
+
+	renderSearchResults(comic) {
+
+		if (this.state.results === undefined) {
+			return;
+		}
+
+		return (
+			<div className="search-result">
+				<img className="result-img" src={comic.thumbnail.path + "." + comic.thumbnail.extension}/>
+				<div className="result-information">
+					<div className="result-title">{comic.title}</div>
+					<div className="result-creators"></div>
+					<div className="comic__add-to-collection button" data-comicid={comic.id}>Add to Collection</div>
+					<div className="comic__add-to-wishlist button" data-comicid={comic.id}>Add to Wishlist</div>
+					<div className="result__added-succesfully hide">Added Successfully!</div>
+					<a href="/comiccollector/pages/viewcomicinfo?&comicId={comic.id}">View Full Information</a>
+				</div>
+			</div>
+		);
 	}
 
 	render() {
@@ -125,6 +129,7 @@ class Search extends Component {
 					</div>
 					<div className={`spinner ${this.state.showSpinner}`}></div>
 					<div className="results">
+						{this.state.results.map(this.renderSearchResults)}
 					</div>
 					<div className="pagination hide">
 						<div className="prev button hide">
