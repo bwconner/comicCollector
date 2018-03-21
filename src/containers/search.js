@@ -10,6 +10,11 @@ class Search extends Component {
 		this.state = {
 			searchTerm: "",
 			showSpinner: "hide",
+			showPagination: "hide",
+			currentPage: 0,
+			currentOffset: 0,
+			updateOffset: 24,
+			resultLimit: 24,
 			results:[]
 		};
 
@@ -17,6 +22,8 @@ class Search extends Component {
 		this.initiateSearch = this.initiateSearch.bind(this);
 		this.setStateSearchResults = this.setStateSearchResults.bind(this);
 		this.renderSearchResults = this.renderSearchResults.bind(this);
+		this.prevPage = this.prevPage.bind(this);
+		this.nextPage = this.nextPage.bind(this);
 	}
 
 	updateSearchTerm(event) {
@@ -24,17 +31,62 @@ class Search extends Component {
 	}
 
 	initiateSearch() {
-		this.setState({showSpinner: ""});
-		this.getSearchResults(this.state.searchTerm);
+		this.setState({
+			showSpinner: "",
+			showPagination: "hide", //Hide any previous search's pagination
+			results: [] //Empty Results immediately upon search
+		});
+
+		this.getSearchResults();
+	}
+
+	prevPage() {
+		//Still need a check in here to prevent going past 
+		//last page incase this is displayed when it shouldn't be
+		if (this.state.currentOffset - this.state.updateOffset < 0) {
+			return;
+		}
+
+		this.setState({
+			showSpinner: "",
+			updateOffset: -(this.state.resultLimit),
+			results: [] //Empty Results immediately upon search
+		});
+
+		this.getSearchResults();
+	}
+
+	nextPage() {
+		this.setState({
+			showSpinner: "",
+			updateOffset: this.state.resultLimit,
+			results: [] //Empty Results immediately upon search
+		});
+
+		this.getSearchResults();
 	}
 
 	getSearchResults() {
-		this.props.fetchComics(this.state.searchTerm, this.setStateSearchResults);
+		this.props.fetchComics(this.state.searchTerm, this.setStateSearchResults, this.state.resultLimit, this.state.currentOffset);
 	}
 
 	setStateSearchResults(response) {
-		this.setState({results: response});
-		this.setState({showSpinner: "hide"});
+
+		// else if (this.state.currentOffset * this.state.currentPage + this.state.updateOffset > response.total) {
+		//	this.state.currentOffset + this.state.updateOffset
+		//}
+
+		this.setState({
+			results: response.results,
+			currentOffset:  this.state.currentOffset + this.state.updateOffset,
+			showSpinner: "hide"
+		});
+
+		console.log(this.state.currentOffset);
+		
+		if (response.total > this.state.resultLimit) {
+			this.setState({showPagination: ""});
+		}
 	}
 
 	renderSearchResults(comic) {
@@ -131,13 +183,17 @@ class Search extends Component {
 					<div className="results">
 						{this.state.results.map(this.renderSearchResults)}
 					</div>
-					<div className="pagination hide">
-						<div className="prev button hide">
+					<div className={`pagination ${this.state.showPagination}`}>
+						<div 
+							className="prev button hide"
+							onClick={this.prevPage}>
 							Previous
 						</div>
 						<div className="pages">
 						</div>
-						<div className="next button">
+						<div 
+							className="next button"
+							onClick={this.nextPage}>
 							Next
 						</div>
 					</div>
