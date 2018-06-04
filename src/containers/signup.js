@@ -63,9 +63,6 @@ export default class Login extends Component {
 }
 
 function mapStateToProps(state) {
-	//Whatever get returned from here will show up as props
-	//inside of BookList
 	return {
-		books: state.books
 	};
 }
