@@ -96,17 +96,11 @@ class Search extends Component {
 		}
 
 		return (
-			<div className="search-result">
-				<img className="result-img" src={comic.thumbnail.path + "." + comic.thumbnail.extension}/>
-				<div className="result-information">
-					<div className="result-title">{comic.title}</div>
-					<div className="result-creators"></div>
-					<div className="comic__add-to-collection button" data-comicid={comic.id}>Add to Collection</div>
-					<div className="comic__add-to-wishlist button" data-comicid={comic.id}>Add to Wishlist</div>
-					<div className="result__added-succesfully hide">Added Successfully!</div>
-					<a href="/comiccollector/pages/viewcomicinfo?&comicId={comic.id}">View Full Information</a>
-				</div>
-			</div>
+			<Comic
+				comicImage={comic.thumbnail.path + "." + comic.thumbnail.extension}
+				comicTitle={comic.title}
+				comicId={comic.id}
+			/>
 		);
 	}
 
