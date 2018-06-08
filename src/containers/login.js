@@ -20,7 +20,7 @@ export default class Login extends Component {
 								<p className="input-label">Username:</p>
 								<input id="login-username" type="text" name="username" className="username" placeholder="User Name:"/>
 								<p className="input-label">Password:</p>
-								<input id="login-password" type="text" name="password" className="password" placeholder="Password:"/>
+								<input id="login-password" type="password" name="password" className="password" placeholder="Password:"/>
 								<p className="error login-error hide">Please enter valid login credentials.</p>
 							</form>
 							<button className="login button">Login</button>
