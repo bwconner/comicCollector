@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
 
-export default class LoginForm extends Component {
+export default class SignupForm extends Component {
 	constructor(props) {
 		super(props);
 	}
