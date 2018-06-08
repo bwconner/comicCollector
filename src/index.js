@@ -8,10 +8,10 @@ import reducers from "./reducers";
 import App from './components/app';
 import Header from './components/header';
 import Search from './containers/search';
-import Login from './containers/login';
+import LoginForm from './components/login-form';
+import CreateAccount from './components/create-account-form';
 import Signup from './containers/signup';
 import Profile from './containers/profile';
-import Account from './containers/account';
 import Collection from './containers/collection';
 import Wishlist from './containers/wishlist';
 
@@ -24,13 +24,14 @@ ReactDOM.render(
 				<div>
 					<Header />
 					<Switch>
-						<Route path="/account" component={Account} />
+						<Route path="/account" component={Profile} />
 						<Route path="/profile" component={Profile} />
 						<Route path="/user" component={Profile} />
+						<Route path="/login" component={LoginForm} />\
+						<Route path="/create-account" component={Signup} />
+						<Route path="/signup" component={Signup} />
 						<Route path="/collection" component={Collection} />
 						<Route path="/wishlist" component={Wishlist} />
-						<Route path="/login" component={Login} />
-						<Route path="/signup" component={Signup} />
 						<Route path="/search" component={Search} />
 						<Route path="/" component={App} />
 					</Switch>
