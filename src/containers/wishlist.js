@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 
 export default class Wishlist extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	render() {
 		return (
-			<div className="site-body-wrapper">
-				<p className="collection-header">Wishlist: </p>
-				<div className="collection">
-				</div>
-			</div>
+			<div></div>
 		);
 	}
+}
+
+function mapStateToProps(state) {
+	return {
+		
+	};
 }
