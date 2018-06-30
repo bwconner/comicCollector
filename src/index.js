@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import reducers from "./reducers";
-import App from './components/app';
+import Home from './components/home';
 import Header from './components/header';
 import Search from './containers/search';
 import LoginForm from './components/login';
@@ -33,7 +33,7 @@ ReactDOM.render(
 						<Route path="/collection" component={Collection} />
 						<Route path="/wishlist" component={Wishlist} />
 						<Route path="/search" component={Search} />
-						<Route path="/" component={App} />
+						<Route path="/" component={Home} />
 					</Switch>
 				</div>
 			</BrowserRouter>
