@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import Collection from "../components/collection.js"
 
-export default class Collection extends Component {
+export default class CollectionContainer extends Component {
 	constructor(props) {
 		super(props);
 	}
